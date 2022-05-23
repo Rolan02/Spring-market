@@ -1,5 +1,6 @@
 package com.rolydev.rolydevmarket.persistence.entity;
 
+import jdk.jfr.Category;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,7 +10,7 @@ import javax.persistence.*;
 @Setter
 @Entity
 @Table(name = "productos")
-public class Product {
+public class Producto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,14 +24,19 @@ public class Product {
     private Integer idCategory;
 
     @Column(name = "codigo_barras")
-    private String barCode;
+    private String codigoBarras;
 
     @Column(name = "precio_venta")
-    private Double salesPrice;
+    private Double precioVenta;
 
     @Column(name = "cantidad_stock")
-    private Integer amount;
+    private Integer cantidadStock;
 
     @Column(name = "estado")
-    private Boolean state;
+    private Boolean estado;
+
+    //Con estas anotaciones le estamos diciendo que desde esta clase no podremos insetar ni modificar el atributo categoria
+    @ManyToOne
+    @JoinColumn(name = "id_categoria", insertable = false, updatable = false)
+    private Categoria categoria;
 }
