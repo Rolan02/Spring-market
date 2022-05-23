@@ -5,6 +5,7 @@ import com.rolydev.rolydevmarket.domain.repository.ProductRepository;
 import com.rolydev.rolydevmarket.persistence.crud.ProductoCrudRepository;
 import com.rolydev.rolydevmarket.persistence.entity.Producto;
 import com.rolydev.rolydevmarket.persistence.mapper.ProductMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -13,7 +14,9 @@ import java.util.Optional;
 @Repository
 public class ProductoRepository implements ProductRepository {
 
+    @Autowired
     private ProductoCrudRepository productoCrudRepository;
+    @Autowired
     private ProductMapper productMapper;
 
     @Override
